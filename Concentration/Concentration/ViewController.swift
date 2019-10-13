@@ -18,7 +18,7 @@ class ViewController: UIViewController {
         }
     }
     
-    private var emojiChoices = ["👻", "🎃", "🎃", "👻"]
+    private var emojiChoices = ["👻", "😈", "🎃", "👻", "👹", "🤡", "👹", "👽", "👽", "🤡", "😈", "🎃"]
     
     @IBOutlet weak var flipCountLabel: UILabel!
     
