@@ -10,6 +10,8 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    var game = Concentration()
+    
     private var flipCount: Int = 0 {
         didSet {
             flipCountLabel.text = "翻牌：\(flipCount)次"
