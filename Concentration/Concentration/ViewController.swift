@@ -10,15 +10,20 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    var game = Concentration()
+    /// 多少对卡牌
+    var numberOfPairsOfCards: Int {
+        return (cardButtons.count + 1) / 2
+    }
     
-    private var flipCount: Int = 0 {
+    lazy var game = Concentration(numberOfPairsOfCards: self.numberOfPairsOfCards)
+    
+    var flipCount: Int = 0 {
         didSet {
             flipCountLabel.text = "翻牌：\(flipCount)次"
         }
     }
     
-    private var emojiChoices = ["👻", "😈", "🎃", "👻", "👹", "🤡", "👹", "👽", "👽", "🤡", "😈", "🎃"]
+    var emojiChoices = ["👻", "😈", "🎃", "👻", "👹", "🤡", "👹", "👽", "👽", "🤡", "😈", "🎃"]
     
     @IBOutlet weak var flipCountLabel: UILabel!
     
