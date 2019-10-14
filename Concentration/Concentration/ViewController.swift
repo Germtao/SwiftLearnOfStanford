@@ -15,21 +15,21 @@ class ViewController: UIViewController {
         return (cardButtons.count + 1) / 2
     }
     
-    lazy var game = Concentration(numberOfPairsOfCards: self.numberOfPairsOfCards)
+    private lazy var game = Concentration(numberOfPairsOfCards: self.numberOfPairsOfCards)
     
-    var flipCount: Int = 0 {
+    private(set) var flipCount: Int = 0 {
         didSet {
             flipCountLabel.text = "翻牌：\(flipCount)次"
         }
     }
     
-    var emojiChoices = ["👻", "😈", "🎃", "👹", "🤡", "👽"]
+    private var emojiChoices = ["👻", "😈", "🎃", "👹", "🤡", "👽"]
     
-    var emoji = [Int: String]()
+    private var emoji = [Int: String]()
     
-    @IBOutlet weak var flipCountLabel: UILabel!
+    @IBOutlet private weak var flipCountLabel: UILabel!
     
-    @IBOutlet var cardButtons: [UIButton]!
+    @IBOutlet private var cardButtons: [UIButton]!
 }
 
 extension ViewController {
@@ -41,7 +41,7 @@ extension ViewController {
 
 // MARK: - Action
 extension ViewController {
-    @IBAction func touchCard(_ sender: UIButton) {
+    @IBAction private func touchCard(_ sender: UIButton) {
         flipCount += 1
         if let cardNumber = cardButtons.firstIndex(of: sender) {
             game.chooseCard(at: cardNumber)
