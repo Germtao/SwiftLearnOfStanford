@@ -41,7 +41,6 @@ class Concentration {
                     cards[index].isMatched = true
                 }
                 cards[index].isFaceUp = true
-                indexOfTheOneAndOnlyFaceUpCard = nil
             } else {
                 indexOfTheOneAndOnlyFaceUpCard = index
             }
@@ -49,8 +48,8 @@ class Concentration {
     }
     
     init(numberOfPairsOfCards: Int) {
-        for identifier in 0..<numberOfPairsOfCards {
-            let card = Card(identifier: identifier)
+        for _ in 0..<numberOfPairsOfCards {
+            let card = Card()
             cards += [card, card]
         }
         
