@@ -26,3 +26,19 @@ struct Card {
         self.identifier = Card.getUniqueIdentifier()
     }
 }
+
+extension Card: Hashable {
+    
+      // Swift5之前
+//    var hashValue: Int {
+//        return identifier
+//    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(self.identifier)
+    }
+    
+    static func == (lhs: Self, rhs: Self) -> Bool {
+        return lhs.identifier == rhs.identifier
+    }
+}

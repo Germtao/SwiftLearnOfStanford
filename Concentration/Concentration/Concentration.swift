@@ -8,7 +8,8 @@
 
 import Foundation
 
-class Concentration {
+// 结构体 - 值类型，写时复制可变内容
+struct Concentration {
     
     var cards = [Card]()
     
@@ -33,13 +34,13 @@ class Concentration {
         }
     }
     
-    func chooseCard(at index: Int) {
+    mutating func chooseCard(at index: Int) {
         // 断言保护Api
         assert(cards.indices.contains(index), "Concentration.chooseCard(at: \(index)): chosen index not in the cards.")
         
         if !cards[index].isMatched {
             if let matchIndex = indexOfTheOneAndOnlyFaceUpCard, matchIndex != index {
-                if cards[matchIndex].identifier == cards[index].identifier {
+                if cards[matchIndex] == cards[index] {
                     cards[matchIndex].isMatched = true
                     cards[index].isMatched = true
                 }
