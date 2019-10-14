@@ -19,7 +19,7 @@ class ViewController: UIViewController {
     
     private(set) var flipCount: Int = 0 {
         didSet {
-            flipCountLabel.text = "翻牌：\(flipCount)次"
+            updateFlipCountLabel()
         }
     }
     
@@ -28,7 +28,11 @@ class ViewController: UIViewController {
     
     private var emoji = [Card: String]()
     
-    @IBOutlet private weak var flipCountLabel: UILabel!
+    @IBOutlet private weak var flipCountLabel: UILabel! {
+        didSet {
+            updateFlipCountLabel()
+        }
+    }
     
     @IBOutlet private var cardButtons: [UIButton]!
 }
@@ -74,4 +78,14 @@ private extension ViewController {
         }
         return emoji[card] ?? "?"
     }
+    
+    func updateFlipCountLabel() {
+        let attributes: [NSAttributedString.Key: Any] = [
+            .strokeWidth: 5.0,
+            .strokeColor: UIColor.systemOrange
+        ]
+        let attributedString = NSAttributedString(string: "翻牌：\(flipCount)次", attributes: attributes)
+        flipCountLabel.attributedText = attributedString
+    }
 }
+
