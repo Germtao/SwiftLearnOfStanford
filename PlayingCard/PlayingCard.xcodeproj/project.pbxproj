@@ -16,6 +16,7 @@
 		3B0596AE235568C50085597A /* PlayingCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0596AD235568C50085597A /* PlayingCard.swift */; };
 		3B0596B023556E110085597A /* PlayingCardDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0596AF23556E110085597A /* PlayingCardDeck.swift */; };
 		3B0596B2235597560085597A /* PlayingCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0596B1235597560085597A /* PlayingCardView.swift */; };
+		3B0596B52355A6D10085597A /* CGRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0596B42355A6D10085597A /* CGRect.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		3B0596AD235568C50085597A /* PlayingCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayingCard.swift; sourceTree = "<group>"; };
 		3B0596AF23556E110085597A /* PlayingCardDeck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayingCardDeck.swift; sourceTree = "<group>"; };
 		3B0596B1235597560085597A /* PlayingCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayingCardView.swift; sourceTree = "<group>"; };
+		3B0596B42355A6D10085597A /* CGRect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGRect.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 		3B059697235568380085597A /* PlayingCard */ = {
 			isa = PBXGroup;
 			children = (
+				3B0596B32355A6B40085597A /* Extension */,
 				3B05969C235568380085597A /* ViewController.swift */,
 				3B0596B1235597560085597A /* PlayingCardView.swift */,
 				3B05969E235568380085597A /* Main.storyboard */,
@@ -82,6 +85,14 @@
 				3B0596A3235568430085597A /* LaunchScreen.storyboard */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3B0596B32355A6B40085597A /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				3B0596B42355A6D10085597A /* CGRect.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -161,6 +172,7 @@
 				3B0596B023556E110085597A /* PlayingCardDeck.swift in Sources */,
 				3B0596AE235568C50085597A /* PlayingCard.swift in Sources */,
 				3B05969B235568380085597A /* SceneDelegate.swift in Sources */,
+				3B0596B52355A6D10085597A /* CGRect.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
