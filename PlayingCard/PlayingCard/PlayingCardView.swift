@@ -72,9 +72,7 @@ extension PlayingCardView {
         
         configureCornerLabel(lowerRightCornerLabel)
         // 仿射变换
-        lowerRightCornerLabel.transform = CGAffineTransform.identity
-            .translatedBy(x: lowerRightCornerLabel.frame.size.width, y: lowerRightCornerLabel.frame.size.height)
-            .rotated(by: CGFloat.pi)
+        lowerRightCornerLabel.transform = CGAffineTransform(rotationAngle: CGFloat.pi)
         lowerRightCornerLabel.frame.origin = CGPoint(x: bounds.maxX, y: bounds.maxY)
             .offsetBy(dx: -cornerOffset, dy: -cornerOffset)
             .offsetBy(dx: -lowerRightCornerLabel.frame.size.width, dy: -lowerRightCornerLabel.frame.size.height)
