@@ -16,10 +16,5 @@ class ViewController: UIViewController {
 extension ViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        for _ in 1...10 {
-            if let card = deck.darw() {
-                print(card)
-            }
-        }
     }
 }
