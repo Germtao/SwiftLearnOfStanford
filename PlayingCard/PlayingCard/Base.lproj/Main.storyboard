@@ -17,6 +17,7 @@
                         <subviews>
                             <view opaque="NO" contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="xLU-YY-JJi" customClass="PlayingCardView" customModule="PlayingCard" customModuleProvider="target">
                                 <rect key="frame" x="16" y="142.5" width="382" height="611"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="xLU-YY-JJi" secondAttribute="height" multiplier="5:8" id="jCt-ex-saf"/>
                                     <constraint firstAttribute="width" priority="750" constant="800" id="kpP-Ez-PRe"/>
@@ -26,6 +27,9 @@
                                         <integer key="value" value="5"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="ycB-O7-6st" appends="YES" id="Qda-sH-EfR"/>
+                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
@@ -39,8 +43,16 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="playingCardView" destination="xLU-YY-JJi" id="FcA-KD-7Vu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="ycB-O7-6st">
+                    <connections>
+                        <action selector="flipCard:" destination="BYZ-38-t0r" id="KLJ-Pu-2dl"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="137.94642857142856"/>
         </scene>

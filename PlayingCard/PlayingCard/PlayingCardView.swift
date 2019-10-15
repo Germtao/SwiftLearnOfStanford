@@ -22,38 +22,15 @@ class PlayingCardView: UIView {
     private lazy var upperLeftCornerLabel = createCornerLabel()
     private lazy var lowerRightCornerLabel = createCornerLabel()
     
-    private struct SizeRatio {
-        static let cornerFontSizeToBoundsHeight: CGFloat = 0.085
-        static let cornerRadiusToBoundsHeight: CGFloat = 0.06
-        static let cornerOffsetToCornerRadius: CGFloat = 0.33
-        static let faceCardImageSizeToBoundsSize: CGFloat = 0.75
-    }
+    private var faceCardScale: CGFloat = SizeRatio.faceCardImageSizeToBoundsSize { didSet { setNeedsDisplay() }}
     
-    private var cornerRadius: CGFloat {
-        return bounds.size.height * SizeRatio.cornerRadiusToBoundsHeight
-    }
-    
-    private var cornerOffset: CGFloat {
-        return cornerRadius * SizeRatio.cornerOffsetToCornerRadius
-    }
-    
-    private var cornerFontSize: CGFloat {
-        return bounds.size.height * SizeRatio.cornerFontSizeToBoundsHeight
-    }
-    
-    private var rankString: String {
-        switch rank {
-        case 1: return "A"
-        case 2...10: return String(rank)
-        case 11: return "J"
-        case 12: return "Q"
-        case 13: return "K"
-        default: return "?"
+    @objc func adjustFaceCardScale(by recognizer: UIPinchGestureRecognizer) {
+        switch recognizer.state {
+        case .changed , .ended:
+            faceCardScale *= recognizer.scale
+            recognizer.scale = 1.0
+        default: break
         }
-    }
-    
-    private var cornerString: NSAttributedString {
-        return centeredAttributedString(rankString + "\n" + suit, fontSize: cornerFontSize)
     }
 }
 
@@ -71,7 +48,7 @@ extension PlayingCardView {
             if let faceCardImage = UIImage(named: rankString + suit,
                                            in: Bundle(for: self.classForCoder),
                                            compatibleWith: traitCollection) {
-                faceCardImage.draw(in: bounds.zoom(by: SizeRatio.faceCardImageSizeToBoundsSize))
+                faceCardImage.draw(in: bounds.zoom(by: faceCardScale))
             } else {
                 drawPips()
             }
@@ -79,7 +56,7 @@ extension PlayingCardView {
             if let cardbackImage = UIImage(named: "cardback",
                                            in: Bundle(for: self.classForCoder),
                                            compatibleWith: traitCollection) {
-                cardbackImage.draw(in: bounds.zoom(by: SizeRatio.faceCardImageSizeToBoundsSize))
+                cardbackImage.draw(in: bounds)
             }
         }
     }
@@ -175,5 +152,41 @@ private extension PlayingCardView {
                 pipRect.origin.y += pipRowSpacing
             }
         }
+    }
+}
+
+extension PlayingCardView {
+    private struct SizeRatio {
+        static let cornerFontSizeToBoundsHeight: CGFloat = 0.085
+        static let cornerRadiusToBoundsHeight: CGFloat = 0.06
+        static let cornerOffsetToCornerRadius: CGFloat = 0.33
+        static let faceCardImageSizeToBoundsSize: CGFloat = 0.75
+    }
+    
+    private var cornerRadius: CGFloat {
+        return bounds.size.height * SizeRatio.cornerRadiusToBoundsHeight
+    }
+    
+    private var cornerOffset: CGFloat {
+        return cornerRadius * SizeRatio.cornerOffsetToCornerRadius
+    }
+    
+    private var cornerFontSize: CGFloat {
+        return bounds.size.height * SizeRatio.cornerFontSizeToBoundsHeight
+    }
+    
+    private var rankString: String {
+        switch rank {
+        case 1: return "A"
+        case 2...10: return String(rank)
+        case 11: return "J"
+        case 12: return "Q"
+        case 13: return "K"
+        default: return "?"
+        }
+    }
+    
+    private var cornerString: NSAttributedString {
+        return centeredAttributedString(rankString + "\n" + suit, fontSize: cornerFontSize)
     }
 }
