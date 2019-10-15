@@ -79,9 +79,9 @@
 		3B0596AC235568510085597A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				3B0596A1235568430085597A /* Assets.xcassets */,
 				3B059698235568380085597A /* AppDelegate.swift */,
 				3B05969A235568380085597A /* SceneDelegate.swift */,
-				3B0596A1235568430085597A /* Assets.xcassets */,
 				3B0596A3235568430085597A /* LaunchScreen.storyboard */,
 			);
 			path = "Supporting Files";
