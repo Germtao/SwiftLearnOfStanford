@@ -17,6 +17,7 @@
 		3B0596B023556E110085597A /* PlayingCardDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0596AF23556E110085597A /* PlayingCardDeck.swift */; };
 		3B0596B2235597560085597A /* PlayingCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0596B1235597560085597A /* PlayingCardView.swift */; };
 		3B0596B52355A6D10085597A /* CGRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0596B42355A6D10085597A /* CGRect.swift */; };
+		3B44DB3A23570772009599FA /* CGFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B44DB3923570772009599FA /* CGFloat.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		3B0596AF23556E110085597A /* PlayingCardDeck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayingCardDeck.swift; sourceTree = "<group>"; };
 		3B0596B1235597560085597A /* PlayingCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayingCardView.swift; sourceTree = "<group>"; };
 		3B0596B42355A6D10085597A /* CGRect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGRect.swift; sourceTree = "<group>"; };
+		3B44DB3923570772009599FA /* CGFloat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGFloat.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				3B0596B42355A6D10085597A /* CGRect.swift */,
+				3B44DB3923570772009599FA /* CGFloat.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -166,6 +169,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B44DB3A23570772009599FA /* CGFloat.swift in Sources */,
 				3B05969D235568380085597A /* ViewController.swift in Sources */,
 				3B0596B2235597560085597A /* PlayingCardView.swift in Sources */,
 				3B059699235568380085597A /* AppDelegate.swift in Sources */,

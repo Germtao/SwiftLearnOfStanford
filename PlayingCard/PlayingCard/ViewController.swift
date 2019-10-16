@@ -34,6 +34,25 @@ class ViewController: UIViewController {
         faceUpCardViews[0].rank == faceUpCardViews[1].rank &&
             faceUpCardViews[0].suit == faceUpCardViews[1].suit
     }
+    
+    // MARK: - 动态动画
+    // 1.
+    private lazy var animator = UIDynamicAnimator(referenceView: view)
+    // 2.
+    private lazy var collisionBehavior: UICollisionBehavior = {
+        let behavior = UICollisionBehavior()
+        behavior.translatesReferenceBoundsIntoBoundary = true
+        animator.addBehavior(behavior)
+        return behavior
+    }()
+    
+    private lazy var itemBehavior: UIDynamicItemBehavior = {
+        let behavior = UIDynamicItemBehavior()
+        behavior.allowsRotation = false
+        behavior.elasticity = 1.0
+        animator.addBehavior(behavior)
+        return behavior
+    }()
 }
 
 extension ViewController {
@@ -54,6 +73,17 @@ extension ViewController {
             cardView.suit = card.suit.description
             
             cardView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(flipCard(_:))))
+            
+            // 3.
+            collisionBehavior.addItem(cardView)
+            itemBehavior.addItem(cardView)
+            let pushBehavior = UIPushBehavior(items: [cardView], mode: .instantaneous)
+            pushBehavior.angle = (2 * CGFloat.pi).arc4random
+            pushBehavior.magnitude = 1.0 + CGFloat(2.0).arc4random
+            pushBehavior.action = { [unowned pushBehavior] in
+                pushBehavior.dynamicAnimator?.removeBehavior(pushBehavior)
+            }
+            animator.addBehavior(pushBehavior)
         }
     }
 }
