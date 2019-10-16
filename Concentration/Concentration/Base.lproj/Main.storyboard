@@ -169,7 +169,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-997" y="893"/>
+            <point key="canvasLocation" x="-672" y="860"/>
         </scene>
         <!--Theme Choose View Controller-->
         <scene sceneID="C5x-nQ-GSD">
@@ -187,7 +187,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                         <state key="normal" title="Sports"/>
                                         <connections>
-                                            <segue destination="BYZ-38-t0r" kind="showDetail" identifier="Choose Theme" id="Avo-8S-TAZ"/>
+                                            <action selector="changeTheme:" destination="Az8-bX-50m" eventType="touchUpInside" id="HE5-hi-Pvf"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ys7-Hn-dsi">
@@ -195,7 +195,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                         <state key="normal" title="Faces"/>
                                         <connections>
-                                            <segue destination="BYZ-38-t0r" kind="showDetail" identifier="Choose Theme" id="7xI-we-0A9"/>
+                                            <action selector="changeTheme:" destination="Az8-bX-50m" eventType="touchUpInside" id="rsj-kF-r9i"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eDO-Lf-ZVR">
@@ -203,7 +203,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                         <state key="normal" title="Animals"/>
                                         <connections>
-                                            <segue destination="BYZ-38-t0r" kind="showDetail" identifier="Choose Theme" id="o0P-IR-nrh"/>
+                                            <action selector="changeTheme:" destination="Az8-bX-50m" eventType="touchUpInside" id="eUK-HI-Iwz"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -217,6 +217,9 @@
                         <viewLayoutGuide key="safeArea" id="hMe-nu-u7j"/>
                     </view>
                     <navigationItem key="navigationItem" id="7BW-6w-lKQ"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="showDetail" identifier="Choose Theme" id="b15-IB-5NA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z5W-ML-yJA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -255,6 +258,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="sdf-S5-ZnC"/>
+        <segue reference="b15-IB-5NA"/>
     </inferredMetricsTieBreakers>
 </document>

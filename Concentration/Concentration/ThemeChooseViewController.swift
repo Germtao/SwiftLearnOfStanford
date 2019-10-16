@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ThemeChooseViewController: UIViewController {
+class ThemeChooseViewController: UIViewController, UISplitViewControllerDelegate {
     
     let themes = [
         "Sports": "⚽️🏀⚾️🏉🎾🏐🎱🏓🎳⛳️",
@@ -16,14 +16,53 @@ class ThemeChooseViewController: UIViewController {
         "Animals": "🐶🐭🦊🐷🙉🦁🐯🐼🐔🐴"
     ]
     
+    // iPhone上的细节
+    private var lastSeguedToDetailController: ConcentrationViewController?
+    
+    // iPad上的细节
+    private var splitViewDetailController: ConcentrationViewController? {
+        return splitViewController?.viewControllers.last as? ConcentrationViewController
+    }
+    
+    @IBAction func changeTheme(_ sender: Any) {
+        if let cvc = splitViewDetailController {
+            if let themeName = (sender as? UIButton)?.currentTitle, let theme = themes[themeName] {
+                cvc.theme = theme
+            }
+        } else if let cvc = lastSeguedToDetailController {
+            if let themeName = (sender as? UIButton)?.currentTitle, let theme = themes[themeName] {
+                cvc.theme = theme
+            }
+            navigationController?.pushViewController(cvc, animated: true)
+        } else {
+            performSegue(withIdentifier: "Choose Theme", sender: sender)
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "Choose Theme" {
             if let themeName = (sender as? UIButton)?.currentTitle,
                 let theme = themes[themeName] {
                 if let vc = segue.destination as? ConcentrationViewController {
                     vc.theme = theme
+                    lastSeguedToDetailController = vc
                 }
             }
         }
+    }
+    
+    override func awakeFromNib() {
+        splitViewController?.delegate = self
+    }
+    
+    func splitViewController(_ splitViewController: UISplitViewController,
+                             collapseSecondary secondaryViewController: UIViewController,
+                             onto primaryViewController: UIViewController) -> Bool {
+        if let cvc = secondaryViewController as? ConcentrationViewController {
+            if cvc.theme == nil {
+                return true // 折叠
+            }
+        }
+        return false
     }
 }
