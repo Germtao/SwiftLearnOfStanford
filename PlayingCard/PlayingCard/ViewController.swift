@@ -14,17 +14,6 @@ class ViewController: UIViewController {
     
     @IBOutlet private var cardViews: [PlayingCardView]!
     
-    @IBOutlet weak var playingCardView: PlayingCardView! {
-        didSet {
-            let swipe = UISwipeGestureRecognizer(target: self, action: #selector(nextCard))
-            swipe.direction = [.left, .right]
-            playingCardView.addGestureRecognizer(swipe)
-            
-            let pinch = UIPinchGestureRecognizer(target: playingCardView, action: #selector(PlayingCardView.adjustFaceCardScale(by:)))
-            playingCardView.addGestureRecognizer(pinch)
-        }
-    }
-    
     private var faceUpCardViews: [PlayingCardView] {
         return cardViews.filter { $0.isFaceUp && !$0.isHidden }
     }
@@ -39,20 +28,7 @@ class ViewController: UIViewController {
     // 1.
     private lazy var animator = UIDynamicAnimator(referenceView: view)
     // 2.
-    private lazy var collisionBehavior: UICollisionBehavior = {
-        let behavior = UICollisionBehavior()
-        behavior.translatesReferenceBoundsIntoBoundary = true
-        animator.addBehavior(behavior)
-        return behavior
-    }()
-    
-    private lazy var itemBehavior: UIDynamicItemBehavior = {
-        let behavior = UIDynamicItemBehavior()
-        behavior.allowsRotation = false
-        behavior.elasticity = 1.0
-        animator.addBehavior(behavior)
-        return behavior
-    }()
+    private lazy var cardBehavior = CardBehavior(in: animator)
 }
 
 extension ViewController {
@@ -75,32 +51,20 @@ extension ViewController {
             cardView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(flipCard(_:))))
             
             // 3.
-            collisionBehavior.addItem(cardView)
-            itemBehavior.addItem(cardView)
-            let pushBehavior = UIPushBehavior(items: [cardView], mode: .instantaneous)
-            pushBehavior.angle = (2 * CGFloat.pi).arc4random
-            pushBehavior.magnitude = 1.0 + CGFloat(2.0).arc4random
-            pushBehavior.action = { [unowned pushBehavior] in
-                pushBehavior.dynamicAnimator?.removeBehavior(pushBehavior)
-            }
-            animator.addBehavior(pushBehavior)
+            cardBehavior.addItem(cardView)
         }
     }
 }
 
 // MARK: - Action
 extension ViewController {
-    @objc private func nextCard() {
-        if let card = deck.draw() {
-            playingCardView.rank = card.rank.order
-            playingCardView.suit = card.suit.description
-        }
-    }
-    
     @objc private func flipCard(_ sender: UITapGestureRecognizer) {
         switch sender.state {
         case .ended:
             if let cardView = sender.view as? PlayingCardView {
+                // behavior移除item
+                cardBehavior.removeItem(cardView)
+                
                 // 添加过渡动画
                 UIView.transition(
                     with: cardView,
@@ -145,8 +109,13 @@ extension ViewController {
                                     options: [.transitionFlipFromRight],
                                     animations: {
                                         cardView.isFaceUp = false
-                                    }
-                                )
+                                }) { _ in
+                                    self.cardBehavior.addItem(cardView)
+                                }
+                            }
+                        } else {
+                            if !cardView.isFaceUp {
+                                self.cardBehavior.addItem(cardView)
                             }
                         }
                     }
