@@ -8,7 +8,11 @@
 
 import UIKit
 
-class ThemeChooseViewController: UIViewController, UISplitViewControllerDelegate {
+class ThemeChooseViewController: LoggingViewController, UISplitViewControllerDelegate {
+    
+    override var loggingName: String {
+        return "Theme"
+    }
     
     let themes = [
         "Sports": "⚽️🏀⚾️🏉🎾🏐🎱🏓🎳⛳️",
@@ -25,18 +29,18 @@ class ThemeChooseViewController: UIViewController, UISplitViewControllerDelegate
     }
     
     @IBAction func changeTheme(_ sender: Any) {
-        if let cvc = splitViewDetailController {
-            if let themeName = (sender as? UIButton)?.currentTitle, let theme = themes[themeName] {
-                cvc.theme = theme
-            }
-        } else if let cvc = lastSeguedToDetailController {
-            if let themeName = (sender as? UIButton)?.currentTitle, let theme = themes[themeName] {
-                cvc.theme = theme
-            }
-            navigationController?.pushViewController(cvc, animated: true)
-        } else {
+//        if let cvc = splitViewDetailController {
+//            if let themeName = (sender as? UIButton)?.currentTitle, let theme = themes[themeName] {
+//                cvc.theme = theme
+//            }
+//        } else if let cvc = lastSeguedToDetailController {
+//            if let themeName = (sender as? UIButton)?.currentTitle, let theme = themes[themeName] {
+//                cvc.theme = theme
+//            }
+//            navigationController?.pushViewController(cvc, animated: true)
+//        } else {
             performSegue(withIdentifier: "Choose Theme", sender: sender)
-        }
+//        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -52,6 +56,7 @@ class ThemeChooseViewController: UIViewController, UISplitViewControllerDelegate
     }
     
     override func awakeFromNib() {
+        super.awakeFromNib()
         splitViewController?.delegate = self
     }
     

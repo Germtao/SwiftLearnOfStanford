@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3B059689235426580085597A /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B059688235426580085597A /* Int.swift */; };
 		3B0596B72356B4690085597A /* ThemeChooseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0596B62356B4690085597A /* ThemeChooseViewController.swift */; };
+		3B44DB3E235806C6009599FA /* LoggingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B44DB3D235806C6009599FA /* LoggingViewController.swift */; };
 		7197BB792352F72900E12AB9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7197BB782352F72900E12AB9 /* AppDelegate.swift */; };
 		7197BB7B2352F72900E12AB9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7197BB7A2352F72900E12AB9 /* SceneDelegate.swift */; };
 		7197BB7D2352F72900E12AB9 /* ConcentrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7197BB7C2352F72900E12AB9 /* ConcentrationViewController.swift */; };
@@ -22,6 +23,7 @@
 /* Begin PBXFileReference section */
 		3B059688235426580085597A /* Int.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Int.swift; sourceTree = "<group>"; };
 		3B0596B62356B4690085597A /* ThemeChooseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeChooseViewController.swift; sourceTree = "<group>"; };
+		3B44DB3D235806C6009599FA /* LoggingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggingViewController.swift; sourceTree = "<group>"; };
 		7197BB752352F72900E12AB9 /* Concentration.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Concentration.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7197BB782352F72900E12AB9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7197BB7A2352F72900E12AB9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -75,6 +77,7 @@
 				3B0596872354262F0085597A /* Extension */,
 				7197BB7C2352F72900E12AB9 /* ConcentrationViewController.swift */,
 				3B0596B62356B4690085597A /* ThemeChooseViewController.swift */,
+				3B44DB3D235806C6009599FA /* LoggingViewController.swift */,
 				7197BB8D23531C4E00E12AB9 /* Concentration.swift */,
 				7197BB8F2353237400E12AB9 /* Card.swift */,
 				7197BB7E2352F72900E12AB9 /* Main.storyboard */,
@@ -170,6 +173,7 @@
 				7197BB7D2352F72900E12AB9 /* ConcentrationViewController.swift in Sources */,
 				7197BB8E23531C4E00E12AB9 /* Concentration.swift in Sources */,
 				7197BB902353237400E12AB9 /* Card.swift in Sources */,
+				3B44DB3E235806C6009599FA /* LoggingViewController.swift in Sources */,
 				3B059689235426580085597A /* Int.swift in Sources */,
 				7197BB792352F72900E12AB9 /* AppDelegate.swift in Sources */,
 				7197BB7B2352F72900E12AB9 /* SceneDelegate.swift in Sources */,

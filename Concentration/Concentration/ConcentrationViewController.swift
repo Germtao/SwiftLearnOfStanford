@@ -8,7 +8,11 @@
 
 import UIKit
 
-class ConcentrationViewController: UIViewController {
+class ConcentrationViewController: LoggingViewController {
+    
+    override var loggingName: String {
+        return "Game"
+    }
     
     /// 多少对卡牌
     var numberOfPairsOfCards: Int {
@@ -43,13 +47,6 @@ class ConcentrationViewController: UIViewController {
     }
     
     @IBOutlet private var cardButtons: [UIButton]!
-}
-
-extension ConcentrationViewController {
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-    }
 }
 
 // MARK: - Action
