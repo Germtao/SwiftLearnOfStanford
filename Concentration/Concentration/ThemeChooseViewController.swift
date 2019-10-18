@@ -15,9 +15,9 @@ class ThemeChooseViewController: LoggingViewController, UISplitViewControllerDel
     }
     
     let themes = [
-        "Sports": "⚽️🏀⚾️🏉🎾🏐🎱🏓🎳⛳️",
-        "Faces": "😀☺️😂🥰🤪🤔🤗🙄🥶😒",
-        "Animals": "🐶🐭🦊🐷🙉🦁🐯🐼🐔🐴"
+        "Sports": "⚽️🏀⚾️🏉🎾🏐🎱🏓🎳⛳️🏑🏸",
+        "Faces": "😀☺️😂🥰🤪🤔🤗🙄🥶😒😍😘",
+        "Animals": "🐶🐭🦊🐷🙉🦁🐯🐼🐔🐴🦉🐮"
     ]
     
     // iPhone上的细节
@@ -29,28 +29,25 @@ class ThemeChooseViewController: LoggingViewController, UISplitViewControllerDel
     }
     
     @IBAction func changeTheme(_ sender: Any) {
-//        if let cvc = splitViewDetailController {
-//            if let themeName = (sender as? UIButton)?.currentTitle, let theme = themes[themeName] {
-//                cvc.theme = theme
-//            }
-//        } else if let cvc = lastSeguedToDetailController {
-//            if let themeName = (sender as? UIButton)?.currentTitle, let theme = themes[themeName] {
-//                cvc.theme = theme
-//            }
-//            navigationController?.pushViewController(cvc, animated: true)
-//        } else {
+        if let cvc = splitViewDetailController {
+            if let themeName = (sender as? UIButton)?.currentTitle, let theme = themes[themeName] {
+                cvc.theme = theme
+            }
+        } else if let cvc = lastSeguedToDetailController {
+            if let themeName = (sender as? UIButton)?.currentTitle, let theme = themes[themeName] {
+                cvc.theme = theme
+            }
+            navigationController?.pushViewController(cvc, animated: true)
+        } else {
             performSegue(withIdentifier: "Choose Theme", sender: sender)
-//        }
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "Choose Theme" {
-            if let themeName = (sender as? UIButton)?.currentTitle,
-                let theme = themes[themeName] {
-                if let vc = segue.destination as? ConcentrationViewController {
-                    vc.theme = theme
-                    lastSeguedToDetailController = vc
-                }
+        if segue.identifier == "Choose Theme", let vc = segue.destination as? ConcentrationViewController {
+            if let themeName = (sender as? UIButton)?.currentTitle, let theme = themes[themeName] {
+                vc.theme = theme
+                lastSeguedToDetailController = vc
             }
         }
     }
@@ -64,9 +61,7 @@ class ThemeChooseViewController: LoggingViewController, UISplitViewControllerDel
                              collapseSecondary secondaryViewController: UIViewController,
                              onto primaryViewController: UIViewController) -> Bool {
         if let cvc = secondaryViewController as? ConcentrationViewController {
-            if cvc.theme == nil {
-                return true // 折叠
-            }
+            return cvc.theme == nil // 折叠
         }
         return false
     }

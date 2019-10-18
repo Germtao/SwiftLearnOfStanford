@@ -16,7 +16,7 @@ class ConcentrationViewController: LoggingViewController {
     
     /// 多少对卡牌
     var numberOfPairsOfCards: Int {
-        return (cardButtons.count + 1) / 2
+        return (visibleCardButttons.count + 1) / 2
     }
     
     private lazy var game = Concentration(numberOfPairsOfCards: self.numberOfPairsOfCards)
@@ -47,13 +47,27 @@ class ConcentrationViewController: LoggingViewController {
     }
     
     @IBOutlet private var cardButtons: [UIButton]!
+    
+    private var visibleCardButttons: [UIButton]! {
+        return cardButtons?.filter { !$0.superview!.isHidden }
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        updateViewFromModel()
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        updateFlipCountLabel()
+    }
 }
 
 // MARK: - Action
 extension ConcentrationViewController {
     @IBAction private func touchCard(_ sender: UIButton) {
         flipCount += 1
-        if let cardNumber = cardButtons.firstIndex(of: sender) {
+        if let cardNumber = visibleCardButttons.firstIndex(of: sender) {
             game.chooseCard(at: cardNumber)
             updateViewFromModel()
         }
@@ -62,9 +76,9 @@ extension ConcentrationViewController {
 
 private extension ConcentrationViewController {
     func updateViewFromModel() {
-        if cardButtons != nil {
-            for index in cardButtons.indices {
-                let button = cardButtons[index]
+        if visibleCardButttons != nil {
+            for index in visibleCardButttons.indices {
+                let button = visibleCardButttons[index]
                 let card = game.cards[index]
                 if card.isFaceUp {
                     button.setTitle(emoji(for: card), for: .normal)
@@ -91,7 +105,7 @@ private extension ConcentrationViewController {
             .strokeWidth: 5.0,
             .strokeColor: UIColor.systemOrange
         ]
-        let attributedString = NSAttributedString(string: "翻牌：\(flipCount)次", attributes: attributes)
+        let attributedString = NSAttributedString(string: traitCollection.verticalSizeClass == .compact ? "翻牌\n\(flipCount)次" : "翻牌：\(flipCount)次", attributes: attributes)
         flipCountLabel.attributedText = attributedString
     }
 }
