@@ -14,9 +14,9 @@ struct ImageURLs {
     
     static var NASA: [String: URL] = {
         let NASAURLStrings = [
-            "Cassini": "https://www.jpl.nasa.gov/images/cassini/20090202/pia03883-full.jpg",
-            "Earth": "https://www.nasa.gov/sites/default/files/wave_earth_mosaic_3.jpg",
-            "Saturn": "https://www.nasa.gov/sites/default/files/saturn_collage.jpg"
+            "Cassini": "http://dingyue.ws.126.net/G6uxuOVNXMDgKY6tLEbHnTGIKuhc0bqQediTcWZIbCLBk1526450617692.jpg",
+            "Earth": "http://wx2.sinaimg.cn/large/593d9f8fly1fzzh4k929pj21xg0trhc7.jpg",
+            "Saturn": "http://hbimg.b0.upaiyun.com/dd7502afc6d61b2de2acd81d9036b82ac76224f845340-WbI7YI_fw658"
         ]
         
         var urls = [String: URL]()

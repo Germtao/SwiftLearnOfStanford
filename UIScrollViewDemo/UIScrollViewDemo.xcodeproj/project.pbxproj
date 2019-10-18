@@ -15,6 +15,7 @@
 		3B44DB5823584056009599FA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B44DB5623584056009599FA /* LaunchScreen.storyboard */; };
 		3B44DB6123584532009599FA /* ImageURLs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B44DB6023584532009599FA /* ImageURLs.swift */; };
 		3B44DB6323584BFA009599FA /* oval.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3B44DB6223584BFA009599FA /* oval.jpg */; };
+		3B44DB6523598EFB009599FA /* CassiniViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B44DB6423598EFB009599FA /* CassiniViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		3B44DB5923584056009599FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3B44DB6023584532009599FA /* ImageURLs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageURLs.swift; sourceTree = "<group>"; };
 		3B44DB6223584BFA009599FA /* oval.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = oval.jpg; sourceTree = "<group>"; };
+		3B44DB6423598EFB009599FA /* CassiniViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CassiniViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 		3B44DB4A23584051009599FA /* UIScrollViewDemo */ = {
 			isa = PBXGroup;
 			children = (
+				3B44DB6423598EFB009599FA /* CassiniViewController.swift */,
 				3B44DB4F23584051009599FA /* ImageViewController.swift */,
 				3B44DB6023584532009599FA /* ImageURLs.swift */,
 				3B44DB5123584052009599FA /* Main.storyboard */,
@@ -156,6 +159,7 @@
 				3B44DB5023584051009599FA /* ImageViewController.swift in Sources */,
 				3B44DB4C23584051009599FA /* AppDelegate.swift in Sources */,
 				3B44DB4E23584051009599FA /* SceneDelegate.swift in Sources */,
+				3B44DB6523598EFB009599FA /* CassiniViewController.swift in Sources */,
 				3B44DB6123584532009599FA /* ImageURLs.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
