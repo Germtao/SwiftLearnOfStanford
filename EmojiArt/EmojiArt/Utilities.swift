@@ -150,3 +150,39 @@ extension String {
         return possiblyUnique
     }
 }
+
+extension CGPoint {
+    func offset(by delta: CGPoint) -> CGPoint {
+        return CGPoint(x: x + delta.x, y: y + delta.y)
+    }
+}
+
+extension NSAttributedString {
+    func withFontScaled(by factor: CGFloat) -> NSAttributedString {
+        let mutable = NSMutableAttributedString(attributedString: self)
+        mutable.setFont(mutable.font?.scaled(by: factor))
+        return mutable
+    }
+    
+    var font: UIFont? {
+        return attribute(.font, at: 0, effectiveRange: nil) as? UIFont
+    }
+}
+
+extension NSMutableAttributedString {
+    func setFont(_ newValue: UIFont?) {
+        if newValue != nil { addAttributes([.font:newValue!], range: NSMakeRange(0, length)) }
+    }
+}
+
+extension UIFont {
+    func scaled(by factor: CGFloat) -> UIFont { return withSize(pointSize * factor) }
+}
+
+extension UILabel {
+    func stretchToFit() {
+        let oldCenter = center
+        sizeToFit()
+        center = oldCenter
+    }
+}
