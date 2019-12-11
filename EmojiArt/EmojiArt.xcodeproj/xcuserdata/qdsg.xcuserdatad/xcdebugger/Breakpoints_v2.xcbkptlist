@@ -14,8 +14,8 @@
             filePath = "EmojiArt/EmojiArtViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "149"
-            endingLineNumber = "149"
+            startingLineNumber = "214"
+            endingLineNumber = "214"
             landmarkName = "collectionView(_:cellForItemAt:)"
             landmarkType = "7">
             <Locations>
@@ -30,8 +30,8 @@
                   urlString = "file:///Users/qdsg/Documents/Github/SwiftLearnOfStanford/EmojiArt/EmojiArt/EmojiArtViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "149"
-                  endingLineNumber = "149"
+                  startingLineNumber = "214"
+                  endingLineNumber = "214"
                   offsetFromSymbolStart = "226">
                </Location>
                <Location
@@ -45,8 +45,8 @@
                   urlString = "file:///Users/qdsg/Documents/Github/SwiftLearnOfStanford/EmojiArt/EmojiArt/EmojiArtViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "149"
-                  endingLineNumber = "149"
+                  startingLineNumber = "214"
+                  endingLineNumber = "214"
                   offsetFromSymbolStart = "27">
                </Location>
             </Locations>

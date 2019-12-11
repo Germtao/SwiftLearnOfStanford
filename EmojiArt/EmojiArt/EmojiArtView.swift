@@ -54,7 +54,7 @@ extension EmojiArtView: UIDropInteractionDelegate {
         }
     }
     
-    private func addLabel(with attributedString: NSAttributedString, centerAt point: CGPoint) {
+    func addLabel(with attributedString: NSAttributedString, centerAt point: CGPoint) {
         let label = UILabel()
         label.backgroundColor = .clear
         label.attributedText = attributedString
