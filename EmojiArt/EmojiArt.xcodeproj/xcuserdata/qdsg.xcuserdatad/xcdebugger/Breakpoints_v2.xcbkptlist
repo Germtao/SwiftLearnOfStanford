@@ -3,4 +3,54 @@
    uuid = "E0CA33AE-1EB8-4F26-A78D-2269151CB031"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D60360DB-A728-4FA5-B7BB-00E9DDB19215"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "EmojiArt/EmojiArtViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "149"
+            endingLineNumber = "149"
+            landmarkName = "collectionView(_:cellForItemAt:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "D60360DB-A728-4FA5-B7BB-00E9DDB19215 - cd16c64094d2b54a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.String&gt;) -&gt; () in EmojiArt.EmojiArtViewController.collectionView(_: __C.UICollectionView, cellForItemAt: Foundation.IndexPath) -&gt; __C.UICollectionViewCell"
+                  moduleName = "EmojiArt"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/qdsg/Documents/Github/SwiftLearnOfStanford/EmojiArt/EmojiArt/EmojiArtViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "149"
+                  endingLineNumber = "149"
+                  offsetFromSymbolStart = "226">
+               </Location>
+               <Location
+                  uuid = "D60360DB-A728-4FA5-B7BB-00E9DDB19215 - ea6d32d70ed8c04a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Character) -&gt; Swift.String in closure #1 (Swift.Optional&lt;Swift.String&gt;) -&gt; () in EmojiArt.EmojiArtViewController.collectionView(_: __C.UICollectionView, cellForItemAt: Foundation.IndexPath) -&gt; __C.UICollectionViewCell"
+                  moduleName = "EmojiArt"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/qdsg/Documents/Github/SwiftLearnOfStanford/EmojiArt/EmojiArt/EmojiArtViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "149"
+                  endingLineNumber = "149"
+                  offsetFromSymbolStart = "27">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>
