@@ -43,6 +43,19 @@ class EmojiArtView: UIView {
     override func draw(_ rect: CGRect) {
         backgroundImage?.draw(in: bounds)
     }
+    
+    // KVO
+    // 使用KVO来观察UILabels的center属性
+    // 观察仅持续到堆中
+    // 使用此字典将观察结果保留在堆中
+    private var labelObservations = [UIView: NSKeyValueObservation]()
+    
+    override func willRemoveSubview(_ subview: UIView) {
+        super.willRemoveSubview(subview)
+        if labelObservations[subview] != nil {
+            labelObservations[subview] = nil
+        }
+    }
 
 }
 
@@ -74,5 +87,12 @@ extension EmojiArtView: UIDropInteractionDelegate {
         label.center = point
         addEmojiArtGestureRecognizers(to: label)
         addSubview(label)
+        
+        // 使用KVO观察表情符号标签中心属性的变化
+        // 更改时（表情符号被移动或调整大小）
+        labelObservations[label] = label.observe(\.center) { (label, change) in
+            self.delegate?.emojiArtViewDidChanged(self)
+            NotificationCenter.default.post(name: .emojiArtViewDidChanged, object: self)
+        }
     }
 }
