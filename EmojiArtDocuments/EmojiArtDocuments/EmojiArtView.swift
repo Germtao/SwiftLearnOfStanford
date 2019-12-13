@@ -12,6 +12,10 @@ protocol EmojiArtViewDelegate: NSObjectProtocol {
     func emojiArtViewDidChanged(_ emojiArtView: EmojiArtView)
 }
 
+extension Notification.Name {
+    static let emojiArtViewDidChanged = Notification.Name("emojiArtViewDidChanged")
+}
+
 class EmojiArtView: UIView {
     
     weak var delegate: EmojiArtViewDelegate?
@@ -57,6 +61,7 @@ extension EmojiArtView: UIDropInteractionDelegate {
             for attributedString in providers as? [NSAttributedString] ?? [] {
                 self.addLabel(with: attributedString, centerAt: dropPoint)
                 self.delegate?.emojiArtViewDidChanged(self)
+                NotificationCenter.default.post(name: .emojiArtViewDidChanged, object: self)
             }
         }
     }

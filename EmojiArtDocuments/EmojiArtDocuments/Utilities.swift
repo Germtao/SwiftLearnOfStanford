@@ -225,3 +225,16 @@ extension UIView {
         return image
     }
 }
+
+extension UIDocument.State: CustomStringConvertible {
+    public var description: String {
+        return [
+            UIDocument.State.normal.rawValue: ".normal",
+            UIDocument.State.closed.rawValue: ".closed",
+            UIDocument.State.inConflict.rawValue: ".inConflict",
+            UIDocument.State.savingError.rawValue: ".savingError",
+            UIDocument.State.editingDisabled.rawValue: ".editingDisabled",
+            UIDocument.State.progressAvailable.rawValue: ".progressAvailable"
+        ][rawValue] ?? String(rawValue)
+    }
+}

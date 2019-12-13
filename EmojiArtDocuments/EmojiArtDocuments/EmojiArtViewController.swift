@@ -103,16 +103,66 @@ class EmojiArtViewController: UIViewController {
     private var addingEmoji = false
     
     var document: EmojiArtDocument?
+    
+    private var suppressBadURLWarnings = false
+    
+    private var documentObserver: NSObjectProtocol?
+    private var emojiArtViewObserver: NSObjectProtocol?
+}
+
+// MARK: - Helper Methods
+extension EmojiArtViewController {
+    private func presentBadURLWarning(for url: URL?) {
+        if !suppressBadURLWarnings {
+            let alert = UIAlertController(
+                title: "图片传输失败",
+                message: "无法从其来源传输已删除的图像。\n是否允许通知提示？",
+                preferredStyle: .alert
+            )
+            alert.addAction(UIAlertAction(
+                title: "允许",
+                style: .default
+            ))
+            alert.addAction(UIAlertAction(
+                title: "不再提示",
+                style: .destructive,
+                handler: { action in
+                    self.suppressBadURLWarnings = true
+                }
+            ))
+            present(alert, animated: true)
+        }
+    }
 }
 
 // MARK: - Life Cycle
 extension EmojiArtViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        // 文档状态发生变化时的通知
+        documentObserver = NotificationCenter.default.addObserver(
+            forName: UIDocument.stateChangedNotification,
+            object: document,
+            queue: OperationQueue.main,
+            using: { notification in
+                print("documentState changed to \(self.document!.documentState)")
+            }
+        )
+        
         document?.open { success in
             if success {
                 self.title = self.document?.localizedName
                 self.emojiArt = self.document?.emojiArt
+                
+                // EmojiArtView did changed
+                self.emojiArtViewObserver = NotificationCenter.default.addObserver(
+                    forName: .emojiArtViewDidChanged,
+                    object: self.emojiArtView,
+                    queue: OperationQueue.main,
+                    using: { notification in
+                        self.documentChanged()
+                    }
+                )
             }
         }
     }
@@ -147,11 +197,19 @@ extension EmojiArtViewController {
     }
     
     @IBAction private func close() {
+        if let observer = emojiArtViewObserver {
+            NotificationCenter.default.removeObserver(observer)
+        }
+        
         if document?.emojiArt != nil {
             document?.thumbnail = emojiArtView.snapshot
         }
         dismiss(animated: true) {
-            self.document?.close()
+            self.document?.close { success in
+                if let observer = self.documentObserver {
+                    NotificationCenter.default.removeObserver(observer)
+                }
+            }
         }
     }
 }
@@ -181,6 +239,18 @@ extension EmojiArtViewController: UIDropInteractionDelegate {
         session.loadObjects(ofClass: NSURL.self) { nsurls in
             if let url = nsurls.first as? URL {
                 self.imageFetcher.fetch(url)
+//                DispatchQueue.global(qos: .userInitiated).async {
+//                    if let imageData = try? Data(contentsOf: url.imageURL), let image = UIImage(data: imageData) {
+//                        DispatchQueue.main.async {
+//                            self.emojiArtBackgroundImage = (url, image)
+//                            self.documentChanged()
+//                        }
+//                    } else {
+//                        DispatchQueue.main.async {
+//                            self.presentBadURLWarning(for: url)
+//                        }
+//                    }
+//                }
             }
         }
         
