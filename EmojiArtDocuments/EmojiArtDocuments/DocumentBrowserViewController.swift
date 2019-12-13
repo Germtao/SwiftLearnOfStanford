@@ -39,8 +39,7 @@ class DocumentBrowserViewController: UIDocumentBrowserViewController {
         if let emojiVc = documentVc.contents as? EmojiArtViewController {
             emojiVc.document = EmojiArtDocument(fileURL: documentURL)
         }
-        
-        present(documentVc, animated: true, completion: nil)
+        present(documentVc, animated: true)
     }
 }
 

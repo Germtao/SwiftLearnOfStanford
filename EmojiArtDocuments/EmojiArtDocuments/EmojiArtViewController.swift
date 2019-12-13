@@ -45,7 +45,11 @@ class EmojiArtViewController: UIViewController {
         }
     }
     
-    private lazy var emojiArtView = EmojiArtView()
+    private lazy var emojiArtView: EmojiArtView = {
+        let emojiArt = EmojiArtView()
+        emojiArt.delegate = self
+        return emojiArt
+    }()
     
     @IBOutlet weak var scrollViewWidth: NSLayoutConstraint!
     @IBOutlet weak var scrollViewHeight: NSLayoutConstraint!
@@ -114,6 +118,13 @@ extension EmojiArtViewController {
     }
 }
 
+// MARK: - delegate
+extension EmojiArtViewController: EmojiArtViewDelegate {
+    func emojiArtViewDidChanged(_ emojiArtView: EmojiArtView) {
+        documentChanged()
+    }
+}
+
 // MARK: - Action
 extension EmojiArtViewController {
     @IBAction private func addEmoji() {
@@ -121,7 +132,14 @@ extension EmojiArtViewController {
         collectionView.reloadSections(IndexSet(integer: 0))
     }
     
-    @IBAction private func save() {
+//    @IBAction private func save() {
+//        document?.emojiArt = emojiArt
+//        if document?.emojiArt != nil {
+//            document?.updateChangeCount(.done)
+//        }
+//    }
+    
+    func documentChanged() {
         document?.emojiArt = emojiArt
         if document?.emojiArt != nil {
             document?.updateChangeCount(.done)
@@ -129,7 +147,6 @@ extension EmojiArtViewController {
     }
     
     @IBAction private func close() {
-        save()
         if document?.emojiArt != nil {
             document?.thumbnail = emojiArtView.snapshot
         }
@@ -154,6 +171,10 @@ extension EmojiArtViewController: UIDropInteractionDelegate {
         imageFetcher = ImageFetcher() { (url, image) in
             DispatchQueue.main.async {
                 self.emojiArtBackgroundImage = (url, image)
+                // 除了在EmojiArtView中添加表情符号
+                // 导致文档发生更改
+                // 每当放下新的背景图片时, 文档也会更改
+                self.documentChanged()
             }
         }
         

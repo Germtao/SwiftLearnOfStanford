@@ -185,11 +185,6 @@
                                 <action selector="close" destination="hgq-G9-zUn" id="v69-ge-1rf"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="41d-qX-jl2">
-                            <connections>
-                                <action selector="save" destination="hgq-G9-zUn" id="FWi-2F-BCe"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="39b-Pj-5wY" id="FiA-tn-HYs"/>
